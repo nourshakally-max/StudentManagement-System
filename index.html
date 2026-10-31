@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - طلابي</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="protected-page">
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                <div class="logo-text">
+                    <h4 data-i18n="app_name">طلابي</h4>
+                    <span data-i18n="app_subtitle">نظام إدارة الطلاب</span>
+                </div>
+            </div>
+
+            <div class="menu-label" data-i18n="main_menu">القائمة الرئيسية</div>
+            <nav class="side-menu">
+                <a href="index.html" class="side-link active">
+                    <i class="bi bi-grid"></i>
+                    <span data-i18n="nav_dashboard">لوحة التحكم</span>
+                </a>
+                <a href="view_students.php" class="side-link">
+                    <i class="bi bi-people"></i>
+                    <span data-i18n="nav_students">الطلاب</span>
+                </a>
+                <a href="add_student.php" class="side-link">
+                    <i class="bi bi-person-plus"></i>
+                    <span data-i18n="nav_add_student">إضافة طالب</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="admin-box">
+                    <div class="admin-info">
+                        <div class="admin-circle" id="currentUserAvatar">م</div>
+                        <div class="admin-name">
+                            <h6 id="currentUserName">مدير النظام</h6>
+                            <small data-i18n="role_admin">مدير النظام</small>
+                        </div>
+                    </div>
+                    <a href="logout.php" id="logoutBtn" class="logout-btn" title="تسجيل الخروج">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <header class="top-bar">
+                <button type="button" id="themeToggleBtn" class="top-btn">
+                    <i class="bi bi-sun-fill text-warning" id="themeIcon"></i>
+                    <span id="themeText" data-i18n="theme_light">الوضع النهاري</span>
+                </button>
+                <button type="button" id="langToggleBtn" class="top-btn">
+                    <img src="https://flagcdn.com/w40/us.png" alt="Flag" class="flag-icon" id="langFlag">
+                    <span id="langText">English</span>
+                </button>
+            </header>
+
+            <div class="inner-content">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                    <div>
+                        <h3 class="fw-bold mb-1" data-i18n="dash_welcome">مرحباً بك في لوحة التحكم</h3>
+                        <p class="text-secondary mb-0" data-i18n="dash_sub">نظرة عامة وإحصائيات حية مرتبطة بقاعدة البيانات</p>
+                    </div>
+                    <a href="add_student.php" class="btn btn-gold px-4 py-2">
+                        <i class="bi bi-person-plus-fill me-2"></i><span data-i18n="btn_add_new_student">إضافة طالب جديد</span>
+                    </a>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="my-card d-flex align-items-center justify-content-between">
+                            <div>
+                                <span class="text-secondary small" data-i18n="stat_total">إجمالي الطلاب المسجلين</span>
+                                <h2 class="fw-bold mt-2 mb-0" id="statTotalStudents" style="color: var(--gold);">0</h2>
+                            </div>
+                            <i class="bi bi-people display-5 text-secondary"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="my-card d-flex align-items-center justify-content-between">
+                            <div>
+                                <span class="text-secondary small" data-i18n="stat_recent">المضافون حديثاً (آخر 24 ساعة)</span>
+                                <h2 class="fw-bold mt-2 mb-0" id="statRecentStudents">0</h2>
+                            </div>
+                            <i class="bi bi-clock-history display-5 text-secondary"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="my-card d-flex align-items-center justify-content-between">
+                            <div>
+                                <span class="text-secondary small" data-i18n="stat_status">حالة قاعدة البيانات</span>
+                                <h5 class="fw-bold mt-2 mb-0 text-success" data-i18n="stat_online">متصل ومحدث تلقائياً</h5>
+                            </div>
+                            <i class="bi bi-database-check display-5 text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-card">
+                    <h5 class="fw-bold mb-3" data-i18n="quick_access">الوصول السريع لإدارة سجلات الطلاب</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-1" data-i18n="qa_view_title">قائمة الطلاب والبحث </h6>
+                                    <small class="text-secondary" data-i18n="qa_view_desc">استعراض الطلاب، الفلترة، التعديل، أو الحذف</small>
+                                </div>
+                                <a href="view_students.php" class="btn btn-outline-secondary btn-sm px-3" data-i18n="nav_students">الطلاب</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="fw-bold mb-1" data-i18n="qa_add_title">تسجيل طالب جديد </h6>
+                                    <small class="text-secondary" data-i18n="qa_add_desc">إدخال بيانات طالب مع التحقق الفوري</small>
+                                </div>
+                                <a href="add_student.php" class="btn btn-gold btn-sm px-3" data-i18n="nav_add_student">إضافة طالب</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
